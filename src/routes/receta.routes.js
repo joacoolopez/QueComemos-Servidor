@@ -7,7 +7,10 @@ const router = Router();
 
 router.post('/postReceta',validateJwt ,RecetaController.createReceta)
 
-router.get('/recetas',RecetaController.getRecetas)
+router.get('/all',RecetaController.getRecetas)
 
 router.get('/aleatorio',validateJwt, RecetaController.getAleatorio)
+
+router.get('/unique/:id',validateJwt, RecetaController.getReceta)
+
 module.exports = router;

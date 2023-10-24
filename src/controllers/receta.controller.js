@@ -41,6 +41,16 @@ class RecetaController {
             console.log(err.message)
         }
     }
+
+    async getReceta(req, res){
+        try{
+            const idReceta = req.params.id;
+            const receta = await RecetaService.getReceta(idReceta);
+            return res.status(200).json(receta);
+        } catch(err){
+            console.log("error")
+        }
+    }
 }
 
 module.exports = RecetaController.getInstance();

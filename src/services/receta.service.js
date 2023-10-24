@@ -28,6 +28,15 @@ class RecetaService {
             throw new error ("Error in getAleatorio service")
         }
     }
+
+    async getReceta(id){
+        try{
+            const receta = await recetaModel.find({ id: id })
+            return receta;
+        } catch(err){
+            throw new error ("Error in getRecetas service")
+        }
+    }
 }
 
 module.exports = new RecetaService();

@@ -5,6 +5,6 @@ const validateJwt = require("../middlewares/jwtValidator")
 
 const router = Router();
 
-router.get('/:id',validateJwt ,ImagesController.getImages)
+router.get('/:id' ,ImagesController.getImages)
 
 module.exports = router;

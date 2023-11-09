@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const IngredienteSchema = new Schema({
+    id: Number,
+    nombre: String,
+}, { _id: false });
+
 const RecetaSchema = new Schema({
     id:Number,
     nombre:String,
     tiempoPreparacion:String,
-    ingredientes:[String],
+    ingredientes:[IngredienteSchema],
     receta:String,
     sinGluten:Boolean
 });

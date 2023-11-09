@@ -5,12 +5,12 @@ const validateJwt = require("../middlewares/jwtValidator")
 
 const router = Router();
 
-router.post('/postReceta',validateJwt ,RecetaController.createReceta)
+router.post('/postReceta', RecetaController.createReceta)
 
 router.get('/all',validateJwt, RecetaController.getRecetas)
 
 router.get('/aleatorio',validateJwt, RecetaController.getAleatorio)
 
-router.get('/unique/:id',validateJwt, RecetaController.getReceta)
+router.get('/unique/:id', RecetaController.getReceta)
 
 module.exports = router;

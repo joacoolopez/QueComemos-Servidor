@@ -36,7 +36,7 @@ class UserController {
             if (isUserRegistered){
                 const user = await userService.getUserByMail(email);
 
-                const token = jwt.sign(user.toJSON(), process.env.PRIVATE_KEY, {
+                const token = jwt.sign({id: user._id}, process.env.PRIVATE_KEY, {
                 expiresIn: "1d",
                 });
 

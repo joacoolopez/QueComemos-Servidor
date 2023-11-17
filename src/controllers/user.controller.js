@@ -35,6 +35,7 @@ class UserController {
 
             if (isUserRegistered){
                 const user = await userService.getUserByMail(email);
+                
 
                 const token = jwt.sign({id: user._id}, process.env.PRIVATE_KEY, {
                 expiresIn: "1d",
@@ -42,9 +43,10 @@ class UserController {
 
                 return res.status(200).json({
                 status: 200,
+                id: user._id.toString(),
                 token,
                 estado: true,
-                message: "Token created successfully."
+                message: "Token created successfully.",
                 });
             } else {
                 return res.status(200).json({
@@ -72,6 +74,32 @@ class UserController {
             return res.status(200).json(err);
         }
         
+    }
+
+    async getRecetasGuardadas(req, res){
+      try{
+        const {id} = req.body;
+        let recetas = await userService.getRecetasGuardadas(id)
+        console.log(recetas)
+        return res.status(200).json({
+          recetas: recetas
+      });
+      }catch(err){
+            return res.status(200).json(err);
+        }
+    }
+
+    async postRecetasGuardadas(req, res){
+      try{
+        const {id, receta} = req.body;
+        let newReceta = await userService.postRecetasGuardadas(id, receta)
+        console.log(newReceta)
+        return res.status(200).json({
+          newReceta: newReceta
+      });
+      }catch(err){
+            return res.status(200).json(err);
+        }
     }
 
     }

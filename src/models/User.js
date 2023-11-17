@@ -5,7 +5,8 @@ const UserSchema = new Schema({
     name:String,
     lastname:String,
     email:String,
-    password:String
+    password:String,
+    recipe: [Number]
 });
 
 const User = mongoose.model('User', UserSchema);

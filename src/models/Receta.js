@@ -9,10 +9,11 @@ const IngredienteSchema = new Schema({
 const RecetaSchema = new Schema({
     id:Number,
     nombre:String,
-    tiempoPreparacion:String,
+    tiempoPreparacion:Number,
     ingredientes:[IngredienteSchema],
     receta:String,
-    sinGluten:Boolean
+    sinGluten:Boolean,
+    puntuacion: Number
 });
 
 const User = mongoose.model('Receta', RecetaSchema);

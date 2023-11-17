@@ -16,7 +16,7 @@ class RecetaController {
             let newReceta = await RecetaService.createReceta(req.body);
             return res.status(201).json({
                 message: "Created!",
-                usuario: newReceta,
+                receta: newReceta,
               });
         }catch (err){
             console.log('error')
@@ -39,6 +39,16 @@ class RecetaController {
             return res.status(200).json(recetasAleatorias)
         }catch(err){
             console.log(err.message)
+        }
+    }
+
+    async getReceta(req, res){
+        try{
+            const idReceta = req.params.id;
+            const receta = await RecetaService.getReceta(idReceta);
+            return res.status(200).json(receta);
+        } catch(err){
+            console.log("error")
         }
     }
 

@@ -51,6 +51,29 @@ class UserService {
         }
     }
     
+    async getRecetasGuardadas(id){
+        try{
+        const usuario = await userModel.findOne({ _id: id })
+        return usuario.recipe
+        }catch(err){
+            console.log(err)
+            throw new error ("Error in getCountUser service")
+        }
+    }
+    
+    async postRecetasGuardadas(id, nuevaReceta){
+        try{
+            console.log(id)
+        const receta = await userModel.findOneAndUpdate(
+            { _id: id },
+            { $push: { recipe: nuevaReceta } },
+            { new: true }
+        )
+        return true
+        }catch(err){
+            throw new error ("Error in getCountUser service")
+        }
+    }
 }
 
 module.exports = new UserService();

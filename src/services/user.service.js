@@ -74,6 +74,17 @@ class UserService {
             throw new error ("Error in getCountUser service")
         }
     }
+
+    async changeUser(id, name, lastname, email){
+        try{
+            console.log(id)
+        const result = await userModel.updateOne({ _id: id }, { $set: { name, lastname, email } });
+        return true
+        }catch(err){
+            console.log(err)
+            throw new error ("Error in getCountUser service")
+        }
+    }
 }
 
 module.exports = new UserService();

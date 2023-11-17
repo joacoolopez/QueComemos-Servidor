@@ -13,4 +13,6 @@ router.get('/getRecetasGuardadas', userController.getRecetasGuardadas)
 
 router.post('/postRecetasGuardadas', userController.postRecetasGuardadas)
 
+router.put('/change', userController.changeUser)
+
 module.exports = router;

@@ -102,6 +102,21 @@ class UserController {
         }
     }
 
+    async changeUser(req, res){
+      try{
+        const {id, name, lastname, email} = req.body;
+        let changeUser = await userService.changeUser(id, name, lastname, email)
+        return res.status(200).json({
+          name,
+          lastname,
+          email
+      });
+      }catch(err){
+        console.log(err)
+            return res.status(200).json(err);
+        }
+    } 
+
     }
 
 

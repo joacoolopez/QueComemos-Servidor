@@ -11,6 +11,6 @@ router.get('/all',validateJwt, RecetaController.getRecetas)
 
 router.get('/aleatorio',validateJwt, RecetaController.getAleatorio)
 
-router.get('/unique/:id', RecetaController.getReceta)
+router.get('/unique/:id', validateJwt, RecetaController.getReceta)
 
 module.exports = router;

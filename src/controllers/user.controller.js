@@ -44,6 +44,8 @@ class UserController {
                 return res.status(200).json({
                 status: 200,
                 id: user._id.toString(),
+                name: user.name,
+                lastname: user.lastname,
                 token,
                 estado: true,
                 message: "Token created successfully.",

@@ -10,7 +10,7 @@ router.post('/create', UserController.createUser)
 
 router.post('/login', UserController.login)
 
-router.get('/getRecetasGuardadas', validateJwt, userController.getRecetasGuardadas)
+router.get('/getRecetasGuardadas/:id', validateJwt, userController.getRecetasGuardadas)
 
 router.post('/postRecetasGuardadas', validateJwt, userController.postRecetasGuardadas)
 

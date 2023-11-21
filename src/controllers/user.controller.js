@@ -80,7 +80,7 @@ class UserController {
 
     async getRecetasGuardadas(req, res){
       try{
-        const {id} = req.body;
+        const id = req.params.id;
         let recetas = await userService.getRecetasGuardadas(id)
         console.log(recetas)
         return res.status(200).json({

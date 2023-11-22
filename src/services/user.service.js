@@ -77,9 +77,15 @@ class UserService {
 
     async changeUser(id, name, lastname, email){
         try{
+        let isRegistred = await userModel.findOne({email:email})
+        console.log(isRegistred)
+        if (isRegistred){
+            throw new Error("User already registred")
+        }else{
             console.log(id)
         const result = await userModel.updateOne({ _id: id }, { $set: { name, lastname, email } });
         return true
+        }
         }catch(err){
             console.log(err)
             throw new error ("Error in getCountUser service")

@@ -61,19 +61,33 @@ class UserService {
         }
     }
     
-    async postRecetasGuardadas(id, nuevaReceta){
-        try{
-            console.log(id)
-        const receta = await userModel.findOneAndUpdate(
-            { _id: id },
-            { $push: { recipe: nuevaReceta } },
-            { new: true }
-        )
-        return true
-        }catch(err){
-            throw new error ("Error in getCountUser service")
+    async postRecetasGuardadas(id, nuevaReceta) {
+        try {
+            console.log(id);
+    
+            const usuario = await userModel.findOne({ _id: id });
+            
+            if (usuario && usuario.recipe.includes(nuevaReceta)) {
+                console.log('La receta ya está guardada para este usuario.');
+                return false; 
+            }
+    
+            // Si la receta no existe, se agrega al array 'recipe'
+            const receta = await userModel.findOneAndUpdate(
+                { _id: id },
+                { $push: { recipe: nuevaReceta } },
+                { new: true }
+            );
+    
+            console.log('Receta guardada correctamente.');
+            return true;
+    
+        } catch (err) {
+            console.error(err);
+            throw new Error("Error in postRecetasGuardadas service");
         }
     }
+    
 
     async changeUser(id, name, lastname, email){
         try{
